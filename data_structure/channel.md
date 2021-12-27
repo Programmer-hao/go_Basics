@@ -1,8 +1,8 @@
 Channel
 
 **1. 创建 内置函数make()**  
-    无缓冲管道 :make(chan string)  
-    带缓冲管道 : make(chan string,5)
+    - 无缓冲管道 :make(chan string)  
+    - 带缓冲管道 : make(chan string,5)
 
 **2.函数传递时 chan int 、 <- chan int、 chan <- int区别**  
  (1) 可读可写管道  chan int  
@@ -11,10 +11,10 @@ Channel
  (3) 可写管道 chan <- int  
 
 **3. 数据读写的四种情况**
-无缓冲channel  
-有缓冲channel  
-nil管道  
-close 管道 
+- 无缓冲channel  
+- 有缓冲channel  
+- nil管道  
+- close 管道 
 
 **4.数据结构**
 ```
@@ -43,8 +43,8 @@ recvq:读协程队列
 
 **5. 管道操作**   
 关闭管道  
-关闭管道时会把所有recvq中的协程全部唤醒，赋予类型对应零值
-同时sendq队列中的协程也会唤醒，但协程会触发panic
+- 关闭管道时会把所有recvq中的协程全部唤醒，赋予类型对应零值
+- 同时sendq队列中的协程也会唤醒，但协程会触发panic
 
 **6. select**  
 goroutine-select使用  
@@ -61,17 +61,17 @@ func chanRange(ch chan int)  {
 ```
 **8 .阻塞条件以及造成panic的操作**
 阻塞条件:  
-读取时：  
-    管道无缓冲区  
-    管道缓冲区中没数据  
-    nil管道  
-写入时：  
-    管道无缓冲区  
-    管道缓冲区已满  
-    nil管道
+- 读取时： 
+    - 管道无缓冲区  
+    - 管道缓冲区中没数据  
+    - nil管道  
+- 写入时： 
+    - 管道无缓冲区  
+    - 管道缓冲区已满  
+    - nil管道
 
 panic :  
-关闭管道时，sendq等待写协程队列里的协程会被唤醒，触发panic
-关闭值为nil的管道  
-关闭已经被关闭的管道  
-向已经关闭的管道写入数据  
+- 关闭管道时，sendq等待写协程队列里的协程会被唤醒，触发panic
+- 关闭值为nil的管道  
+- 关闭已经被关闭的管道  
+- 向已经关闭的管道写入数据  
