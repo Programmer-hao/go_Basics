@@ -1,8 +1,8 @@
 Channel
 
 **1. 创建 内置函数make()**  
-    - 无缓冲管道 :make(chan string)  
-    - 带缓冲管道 : make(chan string,5)
+- 无缓冲管道 :make(chan string)  
+- 带缓冲管道 : make(chan string,5)
 
 **2.函数传递时 chan int 、 <- chan int、 chan <- int区别**  
  (1) 可读可写管道  chan int  
@@ -49,7 +49,8 @@ recvq:读协程队列
 **6. select**  
 goroutine-select使用  
 管道读取数据的顺序是随机的，case的执行也是随机的  
-select的case语句读取管道时不会阻塞  
+select的case语句读取管道时不会阻塞   
+
 **7. for-range**  
 可持续的想管道中读取数据，管道没有数据时会阻塞当前协程。即使管道被关闭，for-range也会结束。
 ```
@@ -58,13 +59,14 @@ func chanRange(ch chan int)  {
 		fmt.Printf("get element for ch : %d",i)
 	}
 }
-```
+```  
+
 **8 .阻塞条件以及造成panic的操作**
 阻塞条件:  
 - 读取时： 
-    - 管道无缓冲区  
-    - 管道缓冲区中没数据  
-    - nil管道  
+  - 管道无缓冲区  
+  - 管道缓冲区中没数据  
+  - nil管道  
 - 写入时： 
     - 管道无缓冲区  
     - 管道缓冲区已满  
