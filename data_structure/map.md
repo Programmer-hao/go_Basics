@@ -27,7 +27,7 @@ type bmap struct{
 2. hash冲突  
 两个或多个键值hash匹配到同一bucket上，称作hash冲突。go使用链地址法来解决冲突，当bucket超过8个键值对，再创建一个键值对时，overflow指针指向溢出的bucket. 
 
-**3. 负载因子**
+**3. 负载因子**  
 负载因子 = 键数量/bucket数量   
 
 负载因子过大或过小都不理想：  
