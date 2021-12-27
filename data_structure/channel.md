@@ -1,4 +1,4 @@
-#Channel
+# Channel
 
 **1. 创建 内置函数make()**  
 - 无缓冲管道 :make(chan string)  
